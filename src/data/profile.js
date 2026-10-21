@@ -15,11 +15,11 @@ export const config = {
 // Intro animation: timings in milliseconds, plus its text.
 // Sequence: enter -> hello (holdA) -> sheet fills (fill) -> tech (holdB) -> reveal (exit)
 export const intro = {
-  enter: 700,
-  holdA: 1200,
-  fill: 800,
-  holdB: 1400,
-  exit: 1100,
+  enter: 1800,
+  holdA: 1800,
+  fill: 1500,
+  holdB: 1800,
+  exit: 2500,
   hello: "Hi, I'm",
   wordA: 'Welcome',
   wordB: 'Software Developer',

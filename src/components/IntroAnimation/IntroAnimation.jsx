@@ -5,17 +5,7 @@ import { motion } from 'framer-motion'
 import { intro, profile } from '../../data/profile'
 import './IntroAnimation.css'
 
-/*
-  Self-contained intro. App only needs:
-    <IntroAnimation onExit={...} onComplete={...} />
-  onExit      fires when the reveal starts (show the portfolio now)
-  onComplete  fires when the intro is finished (unmount it)
 
-  Stages (driven by data-stage on the root, styled in IntroAnimation.css):
-    enter -> a -> fill -> b -> exit
-  Timings come from `intro` in src/data/profile.js.
-  To swap the animation later, replace this folder and keep the same two props.
-*/
 export default function IntroAnimation({ onExit, onComplete }) {
   const [stage, setStage] = useState('enter')
   const [reduce, setReduce] = useState(false)

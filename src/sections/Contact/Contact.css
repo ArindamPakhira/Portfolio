@@ -1,0 +1,145 @@
+.contact {
+  padding-bottom: 0;
+}
+.contact .section-head h2 {
+  max-width: 16ch;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: start;
+}
+.contact-side {
+  display: grid;
+  gap: 1.4rem;
+}
+.email-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  width: fit-content;
+  max-width: 100%;
+  padding: 1rem 1.4rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 2.6vw, 1.45rem);
+  font-weight: 600;
+  text-align: left;
+  overflow-wrap: anywhere;
+  transition: border-color 0.3s, background 0.3s;
+}
+.email-copy:hover {
+  border-color: var(--accent);
+  background: var(--surface-2);
+}
+.email-copy svg {
+  flex-shrink: 0;
+  color: var(--accent);
+}
+.contact-note {
+  color: var(--muted);
+  font-size: 0.95rem;
+  max-width: 44ch;
+}
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+/* Form with floating labels */
+.form {
+  display: grid;
+  gap: 1.3rem;
+  justify-items: start;
+}
+.field {
+  position: relative;
+  width: 100%;
+}
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 1.5rem 1.1rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  resize: vertical;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(var(--accent-rgb), 0.15);
+}
+.field label {
+  position: absolute;
+  left: 1.1rem;
+  top: 1rem;
+  color: var(--muted);
+  pointer-events: none;
+  transform-origin: left;
+  transition: transform 0.35s var(--ease), color 0.3s;
+}
+.field input:focus + label,
+.field textarea:focus + label,
+.field input:not(:placeholder-shown) + label,
+.field textarea:not(:placeholder-shown) + label {
+  transform: translateY(-0.7rem) scale(0.78);
+  color: var(--accent);
+}
+
+.contact-marquee {
+  margin-top: clamp(4rem, 9vw, 7rem);
+  padding: 1.2rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.cmq-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.4rem;
+  padding-right: 0.4rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.4rem, 8vw, 6rem);
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+}
+.cmq-dot {
+  width: 0.35em;
+  height: 0.35em;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.footer {
+  padding: 2rem 0 2.4rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.footer button {
+  color: var(--text);
+  font-weight: 700;
+  transition: color 0.3s;
+}
+.footer button:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}

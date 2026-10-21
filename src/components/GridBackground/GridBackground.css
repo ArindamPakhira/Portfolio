@@ -1,0 +1,37 @@
+.gridbg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  --mx: 50vw;
+  --my: 30vh;
+}
+.gridbg-glow {
+  position: absolute;
+  width: 60vmax;
+  height: 60vmax;
+  border-radius: 50%;
+}
+.gridbg-glow-a {
+  top: -30vmax;
+  left: -20vmax;
+  background: radial-gradient(circle, rgba(var(--accent-rgb), 0.1), transparent 65%);
+}
+.gridbg-glow-b {
+  right: -25vmax;
+  bottom: -30vmax;
+  background: radial-gradient(circle, rgba(var(--accent-2-rgb), 0.16), transparent 65%);
+}
+.gridbg-lines {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+.gridbg-lines-lit {
+  background-image: linear-gradient(rgba(var(--accent-rgb), 0.35) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--accent-rgb), 0.35) 1px, transparent 1px);
+  mask-image: radial-gradient(260px circle at var(--mx) var(--my), #000, transparent 70%);
+  -webkit-mask-image: radial-gradient(260px circle at var(--mx) var(--my), #000, transparent 70%);
+}

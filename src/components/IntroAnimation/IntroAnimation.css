@@ -1,0 +1,293 @@
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+/* Black cover with a "window" that opens at exit to reveal the portfolio */
+.intro-curtain {
+  position: absolute;
+  inset: 0;
+  background: var(--bg);
+  clip-path: polygon(evenodd, 0 0, 100% 0, 100% 100%, 0 100%, 0 0, 50% 50%, 50% 50%, 50% 50%, 50% 50%);
+  transition: clip-path var(--exit) cubic-bezier(0.76, 0, 0.24, 1);
+}
+.intro[data-stage='exit'] .intro-curtain {
+  clip-path: polygon(evenodd, 0 0, 100% 0, 100% 100%, 0 100%, 0 0, -25% -25%, 125% -35%, 125% 125%, -25% 115%);
+}
+.intro-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(60% 50% at 72% 38%, rgba(var(--accent-2-rgb), 0.22), transparent 70%),
+    radial-gradient(50% 45% at 24% 68%, rgba(var(--accent-rgb), 0.14), transparent 70%);
+  transition: opacity 0.7s ease;
+}
+.intro[data-stage='exit'] .intro-bg {
+  opacity: 0;
+}
+
+/* The tilted neon glass panel */
+.intro-panel {
+  position: relative;
+  z-index: 2;
+  width: min(940px, 92vw);
+  aspect-ratio: 16 / 9;
+  container-type: inline-size;
+}
+.intro-tilt {
+  position: absolute;
+  inset: 0;
+  transform: perspective(1400px) rotateY(-9deg) rotateX(5deg) rotateZ(-1.2deg);
+  transition: transform 1.5s var(--ease);
+  will-change: transform;
+}
+.intro[data-stage='b'] .intro-tilt {
+  transform: perspective(1400px) rotateY(7deg) rotateX(3deg) rotateZ(0.8deg);
+}
+.intro[data-stage='exit'] .intro-tilt {
+  transform: perspective(1400px) rotateY(0) rotateX(0) rotateZ(0);
+}
+.intro-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  border: 1.5px solid var(--accent);
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px rgba(var(--accent-rgb), 0.12), 0 0 30px rgba(var(--accent-rgb), 0.5),
+    inset 0 0 44px rgba(var(--accent-rgb), 0.12);
+}
+.intro-inner {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 4px;
+  background: rgba(7, 9, 10, 0.94);
+}
+.intro-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.7;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+/* The diagonal sheet that sweeps across, like in the reference */
+.intro-sheet {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.6), rgba(var(--accent-2-rgb), 0.55));
+  clip-path: polygon(100% 0, 100% 0, 100% 0, 100% 0);
+  transition: clip-path 0.95s cubic-bezier(0.76, 0, 0.24, 1);
+  will-change: clip-path;
+}
+.intro[data-stage='a'] .intro-sheet {
+  clip-path: polygon(56% 0, 100% 0, 100% 80%, 100% 80%);
+}
+.intro[data-stage='fill'] .intro-sheet,
+.intro[data-stage='exit'] .intro-sheet {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+.intro[data-stage='b'] .intro-sheet {
+  clip-path: polygon(0 0, 68% 0, 36% 100%, 0 100%);
+}
+
+/* Text */
+.intro-copy,
+.intro-word,
+.intro-tech li {
+  opacity: 0;
+  transform: translateY(18px);
+  filter: blur(10px);
+  transition: opacity 0.6s var(--ease), transform 0.9s var(--ease), filter 0.6s var(--ease);
+}
+.intro-copy {
+  position: absolute;
+  inset: 0 auto 0 7%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.intro-hello {
+  font-size: clamp(0.95rem, 3.2cqw, 1.6rem);
+  color: var(--accent);
+  font-weight: 500;
+}
+.intro-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.2rem, 9.5cqw, 6.4rem);
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+}
+.intro-name span {
+  display: block;
+}
+.intro-word {
+  position: absolute;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.4rem, 5.4cqw, 3.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  color: #fff;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
+}
+.word-a {
+  right: 6%;
+  top: 22%;
+  text-align: right;
+}
+.word-b {
+  left: 7%;
+  top: 38%;
+  max-width: 7ch;
+}
+.intro-tech {
+  position: absolute;
+  inset: 0 7% 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5em;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1rem, 3.3cqw, 2rem);
+  letter-spacing: -0.02em;
+}
+.intro-tech li {
+  padding-left: 0.9em;
+  border-left: 2px solid var(--accent);
+}
+
+.intro[data-stage='a'] .intro-copy,
+.intro[data-stage='a'] .word-a,
+.intro[data-stage='b'] .word-b,
+.intro[data-stage='b'] .intro-tech li {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+.intro[data-stage='a'] .intro-copy {
+  transition-delay: 0.2s;
+}
+.intro[data-stage='a'] .word-a {
+  transition-delay: 0.55s;
+}
+.intro[data-stage='b'] .word-b {
+  transition-delay: 0.35s;
+}
+.intro[data-stage='b'] .intro-tech li {
+  transition-delay: calc(0.45s + var(--i) * 0.09s);
+}
+
+.intro-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
+}
+.intro-progress span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: intro-progress var(--total) linear forwards;
+}
+@keyframes intro-progress {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.intro-skip {
+  position: absolute;
+  z-index: 3;
+  right: 1.4rem;
+  bottom: 1.2rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  color: var(--muted);
+  font-size: 0.85rem;
+  transition: color 0.3s, border-color 0.3s, opacity 0.4s;
+}
+.intro-skip:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.intro[data-stage='exit'] .intro-skip {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Portrait phones: taller panel, sheet shapes adapted to it */
+@media (max-width: 760px) {
+  .intro-panel {
+    width: 88vw;
+    aspect-ratio: 3 / 4;
+    max-height: 78svh;
+  }
+  .intro-tilt {
+    transform: perspective(1200px) rotateY(-6deg) rotateX(3deg) rotateZ(-1deg);
+  }
+  .intro[data-stage='b'] .intro-tilt {
+    transform: perspective(1200px) rotateY(5deg) rotateX(2deg) rotateZ(0.6deg);
+  }
+  .intro[data-stage='a'] .intro-sheet {
+    clip-path: polygon(32% 0, 100% 0, 100% 62%, 100% 62%);
+  }
+  .intro[data-stage='b'] .intro-sheet {
+    clip-path: polygon(0 0, 100% 0, 100% 38%, 0 62%);
+  }
+  .intro-name {
+    font-size: 15cqw;
+  }
+  .intro-hello {
+    font-size: 5cqw;
+  }
+  .intro-copy {
+    inset: 0 auto 0 8%;
+  }
+  .word-a {
+    top: 17%;
+    font-size: 10cqw;
+  }
+  .word-b {
+    top: 12%;
+    max-width: none;
+    font-size: 10cqw;
+  }
+  .intro-tech {
+    inset: auto auto 12% 8%;
+    font-size: 6.2cqw;
+  }
+}
+/* Phones held sideways */
+@media (max-height: 520px) and (orientation: landscape) {
+  .intro-panel {
+    width: min(80vw, 150svh);
+    aspect-ratio: 16 / 9;
+    max-height: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .intro-sheet,
+  .intro-word,
+  .intro-tech,
+  .intro-progress {
+    display: none;
+  }
+  .intro-tilt,
+  .intro[data-stage='b'] .intro-tilt,
+  .intro[data-stage='exit'] .intro-tilt {
+    transform: none;
+  }
+}

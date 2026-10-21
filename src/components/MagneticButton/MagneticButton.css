@@ -1,0 +1,57 @@
+.mbtn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95rem 1.7rem;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 1rem;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 0.4s var(--ease), color 0.35s, border-color 0.35s;
+  -webkit-tap-highlight-color: transparent;
+}
+.mbtn-inner {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  transition: transform 0.4s var(--ease);
+}
+/* Colour that rises from below on hover */
+.mbtn-fill {
+  position: absolute;
+  z-index: 1;
+  left: -10%;
+  top: 100%;
+  width: 120%;
+  height: 160%;
+  border-radius: 50%;
+  transition: top 0.55s var(--ease);
+}
+.mbtn:hover .mbtn-fill,
+.mbtn:focus-visible .mbtn-fill {
+  top: -30%;
+}
+
+.mbtn-primary {
+  background: var(--accent);
+  color: var(--bg);
+}
+.mbtn-primary .mbtn-fill {
+  background: var(--text);
+}
+
+.mbtn-ghost {
+  border: 1.5px solid var(--line);
+  color: var(--text);
+}
+.mbtn-ghost .mbtn-fill {
+  background: var(--accent);
+}
+.mbtn-ghost:hover {
+  color: var(--bg);
+  border-color: var(--accent);
+}

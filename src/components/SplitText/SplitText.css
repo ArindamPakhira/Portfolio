@@ -1,0 +1,15 @@
+.split-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+.split-inner {
+  display: inline-block;
+  transform: translateY(108%) rotate(4deg);
+  transition: transform 1s var(--ease) calc(var(--i) * 70ms + var(--d, 0ms));
+}
+.split.is-in .split-inner {
+  transform: none;
+}

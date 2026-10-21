@@ -1,0 +1,147 @@
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: start;
+}
+.about-text {
+  display: grid;
+  gap: 1.3rem;
+  color: var(--muted);
+  max-width: 62ch;
+}
+.about-text p:first-child {
+  color: var(--text);
+  font-size: 1.25rem;
+  line-height: 1.55;
+}
+.edu {
+  display: grid;
+  gap: 0.15rem;
+  margin-top: 0.6rem;
+  padding-left: 1.2rem;
+  border-left: 3px solid var(--accent);
+}
+.edu strong {
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+}
+
+/* Animated code card */
+.code-card {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+.code-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--line);
+}
+.code-bar span {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #ff5f57;
+}
+.code-bar span:nth-child(2) {
+  background: #febc2e;
+}
+.code-bar span:nth-child(3) {
+  background: #28c840;
+}
+.code-bar em {
+  margin-left: auto;
+  color: var(--muted);
+  font-style: normal;
+  font-size: 0.8rem;
+}
+.code-body {
+  font-family: inherit;
+  font-size: inherit;
+  padding: 1.3rem 1.2rem 1.5rem;
+  line-height: 1.9;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.code-line {
+  opacity: 0;
+  transform: translateX(-12px);
+}
+.code-body.is-in .code-line {
+  animation: line-in 0.6s var(--ease) forwards;
+  animation-delay: calc(var(--i) * 170ms + 0.2s);
+}
+@keyframes line-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.c-k {
+  color: var(--accent-2);
+}
+.c-v {
+  color: var(--accent);
+}
+.c-p {
+  color: #e6c07b;
+}
+.c-s {
+  color: #7fe3b0;
+}
+.c-b {
+  color: #ff9e64;
+}
+.caret {
+  display: inline-block;
+  width: 8px;
+  height: 1.1em;
+  margin-left: 4px;
+  vertical-align: text-bottom;
+  background: var(--accent);
+  animation: blink 1s steps(2) infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: clamp(3rem, 7vw, 5.5rem);
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--line);
+}
+.stat {
+  display: grid;
+  gap: 0.3rem;
+}
+.stat-num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.8rem, 6vw, 4.4rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+.stat-label {
+  max-width: 22ch;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

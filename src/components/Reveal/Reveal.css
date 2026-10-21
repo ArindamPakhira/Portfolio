@@ -1,0 +1,33 @@
+.reveal {
+  transition: opacity 0.9s var(--ease) var(--d), transform 0.9s var(--ease) var(--d),
+    clip-path 1s var(--ease) var(--d), filter 0.9s var(--ease) var(--d);
+  will-change: transform, opacity;
+}
+.reveal-up {
+  opacity: 0;
+  transform: translateY(36px);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-48px);
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(48px);
+}
+.reveal-zoom {
+  opacity: 0;
+  transform: scale(0.92);
+  filter: blur(6px);
+}
+.reveal-mask {
+  opacity: 0;
+  transform: translateY(40px);
+  clip-path: inset(0 0 100% 0);
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  clip-path: inset(-10% -5% -10% -5%);
+}

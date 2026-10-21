@@ -1,0 +1,181 @@
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+.filters button {
+  padding: 0.5rem 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--muted);
+  font-weight: 500;
+  transition: color 0.3s, background 0.3s, border-color 0.3s;
+}
+.filters button:hover {
+  color: var(--text);
+  border-color: rgba(var(--accent-rgb), 0.5);
+}
+.filters button.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+.project-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.project-visual {
+  position: relative;
+  height: 200px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: radial-gradient(circle at 18% 20%, rgba(var(--accent-rgb), 0.3), transparent 60%),
+    radial-gradient(circle at 85% 95%, rgba(var(--accent-2-rgb), 0.4), transparent 55%), var(--surface-2);
+  /* the image (if any) fills this box; swap it in src/data/projects.js */
+}
+.project-glyph {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 4.6rem;
+  letter-spacing: -0.05em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.85);
+  transition: transform 0.7s var(--ease), color 0.4s;
+}
+.project-card:hover .project-glyph {
+  transform: scale(1.12) rotate(-3deg);
+  color: rgba(255, 255, 255, 0.15);
+}
+.project-cat {
+  position: absolute;
+  z-index: 1;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.2rem 0.7rem;
+  border-radius: 4px;
+  background: rgba(5, 5, 5, 0.6);
+  backdrop-filter: blur(6px);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+.project-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1.6rem;
+}
+.project-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: -0.025em;
+}
+.project-body p {
+  margin: 0.5rem 0 1.1rem;
+  color: var(--muted);
+  font-size: 0.97rem;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 1.4rem;
+}
+.tags li {
+  padding: 0.2rem 0.7rem;
+  border-radius: 3px;
+  background: rgba(var(--accent-rgb), 0.12);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+.project-links {
+  display: flex;
+  gap: 1.4rem;
+  margin-top: auto;
+}
+.project-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  background: linear-gradient(var(--accent), var(--accent)) left bottom / 0 2px no-repeat;
+  padding-bottom: 2px;
+  transition: background-size 0.45s var(--ease), color 0.3s;
+}
+.project-links a:hover {
+  background-size: 100% 2px;
+  color: var(--accent);
+}
+
+@media (max-width: 800px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.project-slot {
+  display: block;
+}
+.project-slot.is-featured {
+  grid-column: 1 / -1;
+}
+.project-reveal {
+  height: 100%;
+}
+.project-visual img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.project-star {
+  left: auto;
+  right: 1rem;
+  background: var(--accent);
+  color: var(--bg);
+}
+.project-card.is-featured {
+  flex-direction: row;
+}
+.project-card.is-featured .project-visual {
+  flex: 0 0 42%;
+  height: auto;
+  min-height: 280px;
+}
+.project-card.is-featured .project-body {
+  justify-content: center;
+  padding: clamp(1.6rem, 4vw, 2.6rem);
+}
+.project-card.is-featured h3 {
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+}
+@media (max-width: 800px) {
+  .project-card.is-featured {
+    flex-direction: column;
+  }
+  .project-card.is-featured .project-visual {
+    flex: none;
+    height: 200px;
+    min-height: 0;
+  }
+}
+
+.project-visual img {
+  transition: transform 0.9s var(--ease);
+}
+.project-card:hover .project-visual img {
+  transform: scale(1.06);
+}

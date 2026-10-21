@@ -291,3 +291,13 @@
     transform: none;
   }
 }
+
+/* --- Adjust Intro Box Position for Phones --- */
+@media (max-width: 600px) {
+  .intro-panel {
+    position: relative !important;
+    left: -20px !important;
+    width: 90vw !important; 
+    margin: 0 auto !important; 
+  }
+}

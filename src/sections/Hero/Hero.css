@@ -291,7 +291,7 @@
 .hero-img {
   width: 100%;
   max-width: 400px;
-  max-height: 65vh; /* Prevents the image from becoming taller than the screen */
+  max-height: 85vh; /* Prevents the image from becoming taller than the screen */
   border-radius: 24px;
   object-fit: cover;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);

@@ -133,7 +133,7 @@ export default function Hero({ ready }) {
         {/* RIGHT SIDE: Your Photo */}
         <div className="hero-right">
           <img 
-            src="/image/Own.png" 
+            src="/image/Own1.png" 
             alt="Arindam Pakhira" 
             className="hero-img" 
           />
